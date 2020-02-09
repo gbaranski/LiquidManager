@@ -1,9 +1,15 @@
 #include <iostream>
+#include <fstream>
+#include <stdlib.h>
 #include "manageDatabase.h"
+#include "systemFunctions.h"
 using namespace std;
 
 int main()
 {
+    SystemFunctions callSystemFunction;
+    callSystemFunction.checkOS();
+    callSystemFunction.clearConsole();
     int mainPick;
     cout << "Hello, what you want to do today?\n";
     cout << "1. I want to see list of aromas in database \n";
@@ -26,5 +32,5 @@ int main()
         cout << "Select between 1 and 3";
         break;
     }
-    return 0;
+    return main();
 }
