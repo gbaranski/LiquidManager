@@ -5,11 +5,11 @@
 #include "systemFunctions.h"
 
 using namespace std;
-SystemFunctions callSystemFunction;
+SystemFunctions callSystemFunctionInDatabase;
 
 void AromasDatabase::readFile()
 {
-    callSystemFunction.clearConsole();
+    callSystemFunctionInDatabase.clearConsole();
     ifstream aromasFileDatabase;
     aromasFileDatabase.open("aromasFileDatabase.txt");
     if (!aromasFileDatabase)
@@ -36,13 +36,13 @@ void AromasDatabase::readFile()
         aroma[i] = textLine;
         cout << i + 1 << ". " << aroma[i] << endl;
     }
-    callSystemFunction.pauseConsole();
+    callSystemFunctionInDatabase.pauseConsole();
     aromasFileDatabase.close();
 }
 
 void AromasDatabase::addNewToFile()
 {
-    callSystemFunction.clearConsole();
+    callSystemFunctionInDatabase.clearConsole();
     ofstream aromasFileDatabase;
     aromasFileDatabase.open("aromasFileDatabase.txt", ios::app);
     if (!aromasFileDatabase)
@@ -83,11 +83,11 @@ void delete_line(const char *file_name, int lineToDelete)
 
 void AromasDatabase::removeLineInFile()
 {
-    callSystemFunction.clearConsole();
+    callSystemFunctionInDatabase.clearConsole();
     cout << "Write down a number of line to delete \n";
     int lineToDelete;
     cin >> lineToDelete;
     delete_line("aromasFileDatabase.txt", lineToDelete);
     cout << "Succefully deleted line " << lineToDelete;
-    callSystemFunction.pauseConsole();
+    callSystemFunctionInDatabase.pauseConsole();
 }
