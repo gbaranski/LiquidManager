@@ -8,11 +8,6 @@ using namespace std;
 
 int main()
 {
-    bool albo;
-    if (albo)
-    {
-        cout << "chuj";
-    }
     SystemFunctions callSystemFunction;
     callSystemFunction.checkOS();
     callSystemFunction.clearConsole();
