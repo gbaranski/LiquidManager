@@ -20,11 +20,11 @@ void Liquids::ingredientsToAchieve()
          << "Nicotine strength: ";
     cin >> liquidStrength;
 
-    int baseStrength = 0;
-    int dilutionBaseStrength = 0;
-    int aromaPercent = 0;
-    int glicerinePercent = 0;
-    int additivesPercent = 0;
+    double baseStrength = 0;
+    double dilutionBaseStrength = 0;
+    double aromaPercent = 0;
+    double glicerinePercent = 0;
+    double additivesPercent = 0;
 
     cout << "======== What do you have with you? ========";
 
@@ -48,11 +48,40 @@ void Liquids::ingredientsToAchieve()
          << "!OPTIONAL! Amount of additives e.g alcohol in result liquid [%]";
     cin >> additivesPercent;
 
-    int resultBaseAmount = amountOfLiquid / (baseStrength / dilutionBaseStrength);
-    int resultDilutionBaseAmount = liquidStrength;
-    int resultAromaAmount;
-    int resultGlicerineAmount;
-    int resultAdditivesPercent;
+    double y3 = 0;
+
+    double resultGlicerineAmount = glicerinePercent + additivesPercent;
+    double x3 = amountOfLiquid * resultGlicerineAmount / 100;
+    double resultDilutionBaseAmount = (liquidStrength * amountOfLiquid + baseStrength * (x3 + aromaPercent - amountOfLiquid)) / (dilutionBaseStrength - baseStrength);
+    double resultBaseAmount = amountOfLiquid - resultDilutionBaseAmount - x3 - aromaPercent;
+    string resultString;
+    if (amountOfLiquid <= 0)
+    {
+        resultString = "Invalid amount of liquid(it must be higher than 0)";
+    }
+    else
+    {
+        if (glicerinePercent >= 100)
+            resultString = "Invalid proportions of additives and glicerine";
+        else if (resultDilutionBaseAmount < 0 || resultBaseAmount < 0)
+            resultString = "Invalid proportions of dilution base and nicotine base";
+        else
+        {
+            amountOfLiquid = resultBaseAmount + resultDilutionBaseAmount + x3 + aromaPercent;
+            if (resultGlicerineAmount > 0)
+            {
+                double z1 = (glicerinePercent / resultGlicerineAmount) * x3;
+                double z2 = (x3 - z1);
+                cout << "======== To make ========" << endl
+                     << amountOfLiquid << endl
+                     << "with strength of " << liquidStrength << "mg " << endl
+                     << "";
+            }
+        }
+    }
+
+    cout << resultBaseAmount;
+    callSystemFunctionInNewLiquid.pauseConsole();
 }
 void Liquids::achieveProperNic()
 {
@@ -75,7 +104,7 @@ void Liquids::newLiquidTab()
     switch (newLiquidPick)
     {
     case 1:
-        cout << "1";
+        ingredientsToAchieve();
         break;
     case 2:
         cout << "2";

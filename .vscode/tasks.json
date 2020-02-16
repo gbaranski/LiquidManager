@@ -1,0 +1,23 @@
+{
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "buildIt",
+      "command": "/usr/bin/g++",
+      "args": [
+        "-g",
+        "/home/gbaranski/Documents/LiquidManager/*.cpp",
+        "-o",
+        "/home/gbaranski/Documents/LiquidManager/build/output.o"
+      ],
+      "options": {
+        "cwd": "/usr/bin"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ],
+  "version": "2.0.0"
+}
