@@ -51,7 +51,7 @@ void AromasDatabase::addNewToFile()
     }
     string newAromaName;
     cout << "Write a name of aroma you want to add into database \n";
-    cin >> newAromaName;
+    getline(cin, newAromaName);
     aromasFileDatabase << newAromaName << endl;
     aromasFileDatabase.close();
 }

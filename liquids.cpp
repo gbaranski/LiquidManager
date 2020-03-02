@@ -80,7 +80,12 @@ void Liquids::ingredientsToAchieve()
         }
     }
 
-    cout << resultBaseAmount;
+    cout << "======== You'll need ========" << endl;
+    cout << resultBaseAmount << "ml of nicotine base" << endl
+         << resultDilutionBaseAmount << "ml of dillution base" << endl
+         << resultGlicerineAmount << "ml of glicerine"
+         << aromaPercent << "ml of aroma"
+         << x3 << "dsaasd";
     callSystemFunctionInNewLiquid.pauseConsole();
 }
 void Liquids::achieveProperNic()
